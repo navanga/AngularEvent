@@ -22,7 +22,7 @@
             <img ng-src="{{event.imageUrl}}" alt="{{event.namr}}" />
             <div class="row">
                 <div class="spann11">
-                    <h2>{{event.name}}</h2>
+                    <h2>{{event.name | uppercase}}</h2>
                 </div>
             </div>
             <div class="row">
@@ -42,8 +42,15 @@
             <hr/>
 
             <h3>Sessions</h3>
+
+            Order By:
+            <select ng-model="sortorder" class="input-small">
+                <option selected value="name">Name</option>
+                <option value="-upVoteCount">Votes</option>
+            </select>
+
             <ul class="thumbnails">
-                <li ng-repeat="mysessions in event.sessions">
+                <li ng-repeat="mysessions in event.sessions | orderBy:sortorder">
                     <div class="row session">
 
                         <div class="span0 well votingWidget">
@@ -77,6 +84,7 @@
     <script src="/lib/underscore-1.4.4.min.js"></script>
     <script src="/lib/bootstrap.min.js"></script>
     <script src="/lib/angular/angular.js"></script>
+    <script src="/lib/angular/angular-sanitize.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/controllers/EventController.js"></script>
 
