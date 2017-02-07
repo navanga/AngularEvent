@@ -22,12 +22,12 @@
             <div class="container">
                 <h1>New Event</h1>
                 <hr />
-                <form>
+                <form name="newEventForm">
                     <fieldset>
                         <label>Event Name</label>
-                        <input id="eventName" type="text" ng-model="event.name" placeholder="Name of event..."/>
+                        <input id="eventName" type="text" required ng-model="event.name" placeholder="Name of event..."/>
                         <label>Event Date</label>
-                        <input id="eventDate" type="text" ng-model="event.date" placeholder="Format (mm/dd/yyyy)"/>
+                        <input id="eventDate" type="text" required ng-model="event.date" placeholder="Format (mm/dd/yyyy)"/>
                         <label>Event Time</label>
                         <input id="eventTime" type="text" ng-model="event.time" placeholder="Start and end time"/>
                         <label>Event Location</label>
@@ -36,14 +36,18 @@
 
                         <input id="eventCity" type="text" class="input-small" placeholder="City"/>
                         <input id="eventProvince" type="text" class="input-small" placeholder="Province"/>
+
+                        <label>Image:</label>
+                        <input type="url" id="eventImageUrl" ng-model="event.imageUrl"/>
+
                     </fieldset>
 
                     <img ng-src="{{event.imageUrl}}" src=""/>
                     <br/>
                     <br/>
 
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <button type="button" class="btn btn-default">Cancel</button>
+                    <button type="submit" ng-click="saveEvent(event, newEventForm)" class="btn btn-primary">Save</button>
+                    <button type="button" ng-click="cancelEvent()" class="btn btn-default">Cancel</button>
 
 
                 </form>
